@@ -7,7 +7,7 @@ class Item(db.Model):
     name = db.Column(db.String(64))
     price = db.Column(db.Integer)
     category = db.Column(db.String(64))
-    orders = db.relationship('Order', backref='item')
+    orders = db.relationship('Kitchen', backref='item')
 
     def __repr__(self):
         return f"<Item: {self.id}: {self.name}>"
@@ -30,8 +30,7 @@ class Order(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id')) 
-    # item_id = db.Column(db.Integer, db.ForeignKey('items.id')) 
-    # date it was placed
+    kitchen = db.relationship('Kitchen',backref='order')
     notes = db.Column(db.Text())
 
     def __repr__(self):
@@ -40,10 +39,8 @@ class Order(db.Model):
 class Kitchen(db.Model):
     # this joins an Order with multiple Items
     __tablename__ = "kitchen side"
-
-    id = db.Column(db.Integer, primary_key=True)
-    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
-    item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
+    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'), primary_key=True)
+    item_id = db.Column(db.Integer, db.ForeignKey('items.id'), primary_key=True)
 
     def __repr__(self):
-        return f"<Kitchen: {self.id}>"
+        return f"<Kitchen: {self.order_id}>"
