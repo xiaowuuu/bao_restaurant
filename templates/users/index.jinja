@@ -1,7 +1,21 @@
+{# create new order #}
 {% extends 'base.jinja' %}
 {% block content %}
-    <h1>User Info</h1>
-    {% for user in users  %}
-        <a href="/users/{{ user.id }}" {{user.name}} ></a>        
-    {% endfor %}
+<form action="/orders" method="post">
+    <div>
+        <label for="order_main">Main</label>
+        <select id="order_main"
+                name="order_main"
+                required autofocus>
+                    {% for item in items %}
+                <option value="{{item.id}}">{{ item.name }}</option>
+                    {% endfor %}
+                </select>
+    </div>
+    <div>
+        <label for="order_drinks">Drinks</label>
+        <input type="text">
+    </div>
+</form>
+
 {% endblock content %}
