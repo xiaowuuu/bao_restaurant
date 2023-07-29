@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ying & Paddy's Bao</title>
+    <link href="https://fonts.googleapis.com/css2?family=Borel&family=Caprasimo&family=Pacifico&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+{# header logo / home link #}
+    <div class="header-wrap">
+        <header class="header">
+        <span>
+            <h1 class="logo">
+            <a href="/" class="logo" title="back to home">Home</a>
+            </h1>
+        </span>
+        </header>
+    </div>
+
+    <main class="">
+        <nav>
+
+        </nav>
+        <section id="content">
+        <div class="homepage wrap">
+        {% block content %}
+            
+        {% endblock content %}
+        </div>
+        </section>
+    </main>
+</body>
+</html>
