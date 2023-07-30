@@ -5,6 +5,8 @@
 <h1>Menu</h1>
 
 {% for item in items %}
+<ul style="list-style-type:none;">
     <li>{{item.name}}: £{{item.price}}</li>
-{% endfor %}    
+</ul>
+{% endfor %}
 {% endblock content %}

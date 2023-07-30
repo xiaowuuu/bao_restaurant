@@ -1,0 +1,28 @@
+{# create new order page #}
+{% extends 'base.jinja' %}
+{% block content %}
+<h1>Add New Order</h1>
+<form action="/orders/new" method="post">
+<div>
+    <label for="make_order_user">Select Your Account</label>
+    <select name="make_order_user" id="make_order_user" required>
+        {% for user in users %}
+        <option value="{{user.id}}">{{ user.name }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div>
+    {% for item in items %}
+    <input type="checkbox" name="make_order_food" value="{{ item.id }}">
+    <label for="make_order_food">{{item.name}}:  £{{item.price}}</label>
+    <br>
+    {% endfor %}
+</div>
+<div>
+<label for="make_order_notes">
+<input type="text" placeholder="Please leave your special reqirement. e.g. 'Less sugar'"></label>
+</div>
+<button type="submit">Place Order</button>
+</form>  
+{% endblock content %}
