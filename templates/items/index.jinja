@@ -1,5 +1,10 @@
+{# menu page #}
 {% extends 'base.jinja' %}
 
 {% block content %}
-<h1>items</h1>    
+<h1>Menu</h1>
+
+{% for item in items %}
+    <li>{{item.name}}: £{{item.price}}</li>
+{% endfor %}    
 {% endblock content %}
