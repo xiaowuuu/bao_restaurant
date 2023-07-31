@@ -2,10 +2,10 @@
 {% extends 'base.jinja' %}
 {% block content %}
 
-<div class="userlist_sidebar">
+<div class="userlist">
     {% for user in users %}
     <ul style="list-style-type:none;">
-        <a href="/users/{{user.id}}"><li>{{user.name}}</li></a>
+        <a href="/users/{{user.id}}/my_order"><li>{{user.name}}</li></a>
     </ul>
     {% endfor %}
 </div>

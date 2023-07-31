@@ -1,10 +1,12 @@
 {# your order page #}
+{# route "/users/<id>/my_order" #}
 {% extends 'base.jinja' %}
 {% block content %}
 <a href="button-new_order" href="/orders/new">New Order</a>
 
 <h1>My Order</h1>
 <ul>
+{{kitchen.user.name}}
 {% for order in orders %}
 {{ order.id}}
 <form action="/orders/{{ order.id }}/delete" method="POST">
