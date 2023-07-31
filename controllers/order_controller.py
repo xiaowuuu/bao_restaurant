@@ -19,6 +19,7 @@ def users():
     users = User.query.all()
     return render_template("users/index.jinja", users=users)
 
+# create new order
 @orders_blueprint.route("/orders/new", methods=["POST"])
 def add_orders():
     user_id = request.form['user_id']
@@ -37,12 +38,33 @@ def add_orders():
             db.session.commit()     
     return redirect('/orders/new')
 
-
-
-@orders_blueprint.route("/users/<id>/my_order")
+# order history (only for displaying, could not edit or delete)
+@orders_blueprint.route("/users/<id>/history")
 def my_order(id):
     user = User.query.get(id)
     orders = Order.query.filter_by(user_id = id)
-    return render_template("/users/show.jinja", user=user, orders=orders, )
+    return render_template("/users/history.jinja", user=user, orders=orders, )
+
+# order list page
+@orders_blueprint.route("/users/<id>/my_orders")
+def order_list(id):
+    user = User.query.get(id)
+    orders = Order.query.filter_by(user_id = id)
+    return render_template("orders/order_list.jinja", user=user, orders=orders)
+
+# one order by order id
+@orders_blueprint.route("/orders/<id>")
+def show_order(id):
+    order = Order.query.get(id)
+    return render_template("order")
+
+# user edit order(s)
+@orders_blueprint.route("/users/<id>/edit")
+def edit_order(id):
+    user = User.query.all()
+    orders = Order.query.get(id)
+    return render_template("orders/edit.jinja", user=user, orders=orders)
+
+
 
 

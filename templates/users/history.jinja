@@ -1,0 +1,23 @@
+{# display one order by select one user, user can edit and delete items in the order#}
+{# route: users/<id>/history #}
+{% extends 'base.jinja' %}
+{% block content %}
+<h1>{{user.name}}'s Order</h1>
+
+{# user info loop #}
+{% for order in user.orders %}
+<h3>Order Number: {{order.id}}</h3>
+{# order info loop#}
+{% for order_item in order.items %}
+<ul style="list-style-type:none;">
+<li>{{order_item.item.category}}: {{order_item.item.name}} ----- Price: £{{order_item.item.price}}</li>
+
+</ul>
+{% endfor %}
+<ul style="list-style-type:none;" class="show_user_info">
+<li ><b>Notes:</b> {{order.notes}}</li>
+<li><b>Phone Number:</b> {{user.phone}}</li>
+<li><b>Address:</b> {{user.address}}</li>
+</ul>
+{% endfor %}
+{% endblock content %}
