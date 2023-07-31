@@ -6,7 +6,7 @@
 
 <h1>My Order</h1>
 <ul>
-{{kitchen.user.name}}
+
 {% for order in orders %}
 {{ order.id}}
 <form action="/orders/{{ order.id }}/delete" method="POST">

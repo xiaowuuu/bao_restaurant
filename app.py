@@ -13,16 +13,13 @@ from seed import seed
 app.cli.add_command(seed)
 
 
-from controllers.user_controller import users_blueprint
 from controllers.item_controller import items_blueprint
 from controllers.order_controller import orders_blueprint
-from controllers.kitchen_controller import kitchen_blueprint
 
 
-app.register_blueprint(users_blueprint)
 app.register_blueprint(items_blueprint)
 app.register_blueprint(orders_blueprint)
-app.register_blueprint(kitchen_blueprint)
+
 
 @app.route("/")
 def home():

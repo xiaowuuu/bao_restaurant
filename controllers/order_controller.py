@@ -13,7 +13,13 @@ def new_orders():
     return render_template("orders/new.jinja", users=users, items=items)
 
 
-@orders_blueprint.route("/orders", methods=["POST"])
+# display user list, next is link to user's order
+@orders_blueprint.route("/users")
+def users():
+    users = User.query.all()
+    return render_template("users/index.jinja", users=users)
+
+@orders_blueprint.route("/orders/new", methods=["POST"])
 def add_orders():
     user_id = request.form['user_id']
     notes = request.form['notes']
@@ -31,9 +37,23 @@ def add_orders():
             db.session.commit()     
     return redirect('/orders/new')
 
-# @orders_blueprint.route("/users/<id>/my_order", methods=["POST"])
+
+
+@orders_blueprint.route("/users/<id>/my_order")
+def my_order(id):
+    user = User.query.get(id)
+    orders = Order.query.filter_by(user_id = id)
+    # kitchen_order = OrderItem.query.all()
+    # for order in kitchen_order:
+
+    return render_template("/users/show.jinja", user=user, orders=orders)
+        
+#     # orders = Order.query.all()
+#     # orders = Order.query.join(OrderItem).filter(OrderItem.order_id == id)
+#     return render_template("/users/show.jinja", orders=orders, users=users)
+
 # def my_order(id):
-#     users = User.query.get(id)
-#     orders = Order.query.join(User).filter(User.id == id)
-#     items = Item.query.join(OrderItem).filter(OrderItem.order_id == id)
-#     return render_template("/orders/index.jinja", users = users, orders=orders, items = items)
+    # orders = Order.query.get(id)
+    # orders = Order.query.join(OrderItem).filter(OrderItem.order_id == id)
+    # return render_template("/users/show.jinja", orders=orders)
+

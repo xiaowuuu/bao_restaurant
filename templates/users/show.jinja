@@ -1,7 +1,13 @@
 {# display one order by select one user, user can edit and delete items in the order#}
 {% extends 'base.jinja' %}
 {% block content %}
-{{user.name}}
-
+<h1>{{user.name}}'s Order</h1>
+{% for order in orders %}
+{% for item in order.items %}
+{{item.name}}
+    
 {% endfor %}
+{{order.notes}}
+{% endfor %}
+
 {% endblock content %}
