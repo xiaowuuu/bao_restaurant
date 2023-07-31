@@ -43,10 +43,10 @@ def add_orders():
 def my_order(id):
     user = User.query.get(id)
     orders = Order.query.filter_by(user_id = id)
+    
     # kitchen_order = OrderItem.query.all()
     # for order in kitchen_order:
-
-    return render_template("/users/show.jinja", user=user, orders=orders)
+    return render_template("/users/show.jinja", user=user, orders=orders, )
         
 #     # orders = Order.query.all()
 #     # orders = Order.query.join(OrderItem).filter(OrderItem.order_id == id)
