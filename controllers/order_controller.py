@@ -56,10 +56,12 @@ def order_list(id):
 @orders_blueprint.route("/orders/<id>")
 def show_order(id):
     order = Order.query.get(id)
-    return render_template("order")
+    user = User.query.all()
+    orderitems = OrderItem.query.filter_by(order_id = id)
+    return render_template("orders/order_by_id.jinja", user = user, order=order, orderitems=orderitems)
 
-# user edit order(s)
-@orders_blueprint.route("/users/<id>/edit")
+# user edit order by order id
+@orders_blueprint.route("/orders/<id>/edit")
 def edit_order(id):
     user = User.query.all()
     orders = Order.query.get(id)

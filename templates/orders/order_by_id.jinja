@@ -1,0 +1,24 @@
+{% extends 'base.jinja' %}
+{% block content %}
+{# order = Order.query.get(id)
+    orderitems = OrderItem.query.filter_by(order_id = id) #}
+{# history 
+user = User.query.get(id)
+    orders = Order.query.filter_by(user_id = id)
+    {% for order in user.orders %} #}
+    Order Number: {{order.id}} 
+    {{order.user_id.name}}
+{% for order in orderitems %}
+<ul>
+<li>{{order.item.category}}: {{order.item.name}}-----£{{order.item.price}}</li>
+
+{% endfor %}
+<li>Notes: {{order.notes}}</li>
+<li>Phone Number: {{user.phone}}</li>
+<li>Address: {{user.address}}</li>
+</ul>
+
+{# {% endfor %} #}
+
+
+{% endblock content %}
