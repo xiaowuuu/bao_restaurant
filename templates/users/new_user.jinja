@@ -1,12 +1,14 @@
 {% extends 'base.jinja' %}
 {% block content %}
 <h1>Create New Account</h1>
-<form action="/users/new" methods="post">
-    <label for="name" name="name" id="name">Your Name</label>
+<form action="/users/add" method="post">
+    <label for="name" >Your Name</label>
     <input type="text" name="name" id="name">
-    <label for="phone" name="phone" id="phone">Phone</label>
+    <label for="phone" >Phone</label>
     <input type="number" name="phone" id="phone">
-    <label for="address" name="address" id="address">Address</label>
-    <textarea rows="2" cols="50" name="address" id="address">
-</form>    
+    <label for="address">Address</label>
+    <textarea rows="2" cols="50" name="address" id="address"></textarea>
+<button type="submit">Confirm</button>
+</form>
+
 {% endblock content %}
