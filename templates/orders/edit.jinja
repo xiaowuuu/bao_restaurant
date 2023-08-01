@@ -1,43 +1,40 @@
 {# edit one order and update, jump back to order list page #}
-{#  /orders/<id>/edit #}
-{% extends 'base.jinja' %}
-{% block content %}
-<div>
-<h1>Edit My Order</h1>
-</div>
-Order Number: {{orders.id}}
-{{orders.user.name}}
-<form action="/orders/new" method="post">
-<div>
-    <label for="user_id">Select Your Account</label>
-    <select name="user_id" id="user_id" required>
-        {% for user in users %}
-        <option value="{{user.id}}">{{ user.name }}</option>
-        {% endfor %}
-    </select>
-</div>
-
-<div>
-    {% for item in items %}
-    <input type="checkbox" name="{{item.id}}" value="{{ item.id }}" multiple>
-    <label for="item_id">{{item.name}}:  £{{item.price}}</label>
-    <br>
+{# /orders/<id>/edit #}
+    {% extends 'base.jinja' %}
+    {% block content %}
     <div>
-<label for="notes">
-<input name="notes" id="notes" type="text" placeholder="Please leave your special reqirement. e.g. 'Less sugar'"></label>
-</div>
-<button type="submit">Update</button>
+        <h1>Edit My Order</h1>
+    </div>
+    Order Number: {{orders.id}}
+    {{orders.user.name}}
+    <form action="/orders/new" method="post">
+        <div>
+            <label for="user_id">Select Your Account</label>
+            <select name="user_id" id="user_id" required>
+                {% for user in users %}
+                <option value="{{user.id}}">{{ user.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
 
-{# delete #}
-<form
-        class="delete-order"
-        action="/orders/{{order.id}}/delete"
-        method="POST"
-    >
-<button type="submit">Delete Order</button>
-</form>
-</form>
+        <div>
+            {% for item in items %}
+            <input type="checkbox" name="{{item.id}}" value="{{ item.id }}" multiple>
+            <label for="item_id">{{item.name}}: £{{item.price}}</label>
+            <br>
+            <div>
+                <label for="notes">
+                    <input name="notes" id="notes" type="text"
+                        placeholder="Please leave your special reqirement. e.g. 'Less sugar'"></label>
+            </div>
+            <button type="submit">Update</button>
+
+            {# delete #}
+            <form class="delete-order" action="/orders/{{order.id}}/delete" method="POST">
+                <button type="submit">Delete Order</button>
+            </form>
+    </form>
     {% endfor %}
-</div>
+    </div>
 
-{% endblock content %}
+    {% endblock content %}
