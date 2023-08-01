@@ -30,7 +30,7 @@ class Order(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id')) 
-    items = db.relationship('OrderItem',backref='order')
+    items = db.relationship('OrderItem',backref='order', cascade="all, delete")
     notes = db.Column(db.Text())
 
     def __repr__(self):

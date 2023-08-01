@@ -8,17 +8,20 @@ user = User.query.get(id)
     {% for order in user.orders %} #}
     Order Number: {{order.id}} 
     {{order.user_id.name}}
-{% for order in orderitems %}
+{% for orderitem in order.items %}
 <ul>
-<li>{{order.item.category}}: {{order.item.name}}-----£{{order.item.price}}</li>
+<li>{{orderitem.item.category}}: {{orderitem.item.name}}-----£{{orderitem.item.price}}</li>
 
 {% endfor %}
+
 <li>Notes: {{order.notes}}</li>
 <li>Phone Number: {{order.user.phone}}</li>
 <li>Address: {{order.user.address}}</li>
 </ul>
 
-{# {% endfor %} #}
+<form action="/orders/{{order.id}}/delete" method="POST">
+    <input class="delete--danger" type="submit" value="Delete">
+</form>
 
 
 {% endblock content %}

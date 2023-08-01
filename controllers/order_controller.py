@@ -65,7 +65,19 @@ def show_order(id):
 def edit_order(id):
     user = User.query.all()
     orders = Order.query.get(id)
-    return render_template("orders/edit.jinja", user=user, orders=orders)
+    orderitem = OrderItem.query.filter_by(order_id = id)
+    return render_template("orders/edit.jinja", user=user, orders=orders, orderitem=orderitem)
+
+# delete order by order id
+@orders_blueprint.route("/orders/<id>/delete", methods=['POST'])
+def delete_order(id):
+    # Order.query.filter_by(id = id).delete()
+    order = Order.query.get(id)
+    user_id = order.user_id
+    db.session.delete(order)
+    db.session.commit()
+    return redirect(f"/users/{user_id}/my_orders")
+
 
 
 
