@@ -7,7 +7,7 @@
     </div>
     Order Number: {{orders.id}}
     {{orders.user.name}}
-    <form action="/orders/new" method="post">
+    <form action="/orders/{{order.id}}/edit" method="post">
         <div>
             <label for="user_id">Select Your Account</label>
             <select name="user_id" id="user_id" required>

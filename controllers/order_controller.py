@@ -60,6 +60,7 @@ def show_order(id):
     orderitems = OrderItem.query.filter_by(order_id = id)
     return render_template("orders/order_by_id.jinja", user = user, order=order, orderitems=orderitems)
 
+
 # user edit order by order id
 @orders_blueprint.route("/orders/<id>/edit")
 def edit_order(id):
@@ -67,6 +68,10 @@ def edit_order(id):
     orders = Order.query.get(id)
     orderitem = OrderItem.query.filter_by(order_id = id)
     return render_template("orders/edit.jinja", user=user, orders=orders, orderitem=orderitem)
+
+# @orders_blueprint.route("/orders/<id>", methods=['POST'])
+# def update_order(id):
+
 
 # delete order by order id
 @orders_blueprint.route("/orders/<id>/delete", methods=['POST'])

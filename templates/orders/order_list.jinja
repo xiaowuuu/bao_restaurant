@@ -1,17 +1,24 @@
-{# display orders by order_id and items, links to edit and delete #}
+{# display orders by order_id and items, links to edit and delete. jump to orders/id #}
 {# route /users/<id>/my_orders #}
-    {# jump to orders/id #}
-    {% extends 'base.jinja' %}
-    {% block content %}
 
-    <h1>{{user.name}}'s Order</h1>
-    {% for order in user.orders %}
-    <a href="/orders/{{order.id}}">
-        <h3><b>Order Number: {{order.id}}</b></h3>
-    </a>
-    {% for order_item in order.items %}
+{% extends 'base.jinja' %}
+{% block content %}
+
+<h1>{{user.name}}'s Order</h1>
+{% if user.orders %}
+    
+
+{% for order in user.orders %}
+<a href="/orders/{{order.id}}">
+    <h3><b>Order Number: {{order.id}}</b></h3>
+</a>
+{% for order_item in order.items %}
     <p>{{order_item.item.name}}</p>
-    {% endfor %}
-    {% endfor %}
+{% endfor %}
+{% endfor %}
+{% else %}
+<p>You have no order yet</p>
+<button onclick="window.location.href='/orders/new';" class="homepage-button">Order Here</button>
+{% endif %}
 
-    {% endblock content %}
+{% endblock content %}
