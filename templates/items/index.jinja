@@ -3,21 +3,27 @@
 
 {% block content %}
 
-    <h1>Menu</h1>
-<div class="menu-box">
-    {% for item in items %}
-    <ul style="list-style-type:none;">
-{% if  item.category == "Bao" %}
-    <span>&#129377;</span>
+<h1>Menu</h1>
+<section class="menu">
+    <div class="menu-box">
 
-{% elif item.category == "Noodles" %}
-    <span>&#127836;</span>
-{%else%}
-    <span>&#129483;</span>
-{% endif %}
+        {% for item in items %}
+        <ul style="list-style-type:none;">
+            {% if item.category == "Bao" %}
+            <span>&#129377;</span>
 
-        <li>{{item.name}}: £{{item.price}}</li>
-    </ul>
-    {% endfor %}
-</div>
+            {% elif item.category == "Noodles" %}
+            <span>&#127836;</span>
+            {%else%}
+            <span>&#129483;</span>
+            {% endif %}
+
+            <li>
+                <p class="text">{{item.name}}: £{{item.price}}</p>
+            </li>
+        </ul>
+        {% endfor %}
+
+    </div>
+</section>
 {% endblock content %}

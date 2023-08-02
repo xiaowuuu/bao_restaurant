@@ -15,18 +15,19 @@
 <body>
     {# header logo / home link #}
     <header class="header">
-        <span>
+        <div class="container">
             <a href="/" class="logo" title="back to home">
-                <h1 class="h1-menu">Home</h1>
+                <span class="header__logo"></span>
+                <p class="header__logo">Home</p></span>
             </a>
-        </span>
+        </div>
     </header>
     <main>
-        <nav>
-            {# buttons: menu, user input/submit order, kitchen buttont #}
-            <button onclick="window.location.href='/items';" class="buttons">Menu</button>
-            <button onclick="window.location.href='/orders/new';" class="buttons">Order Food</button>
-            <button onclick="window.location.href='/users';" class="buttons">Manage My Account</button>
+        <nav class="nav__buttons">
+            {# links: menu, user input/submit order, kitchen buttont #}
+            <a href='/items' style="text-decoration: none">Menu</a>
+            <a href="/orders/new" style="text-decoration: none">Order Food</a>
+            <a href="/users" style="text-decoration: none">Manage My Account</a>
         </nav>
         <section id="content">
             <div>

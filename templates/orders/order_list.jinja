@@ -5,6 +5,7 @@
 {% block content %}
 
 <h1>{{user.name}}'s Order</h1>
+<section class="body">
 {% if user.orders %}
     
 
@@ -20,5 +21,5 @@
 <p>You have no order yet</p>
 <button onclick="window.location.href='/orders/new';" class="buttons">Order Here</button>
 {% endif %}
-
+</section>
 {% endblock content %}

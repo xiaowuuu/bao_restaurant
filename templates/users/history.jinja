@@ -6,18 +6,18 @@
 
     {# user info loop #}
     {% for order in user.orders %}
-    <h3>Order Number: {{order.id}}</h3>
+    <p class="text">Order Number: {{order.id}}</p>
     {# order info loop#}
     {% for order_item in order.items %}
     <ul style="list-style-type:none;">
-        <li>{{order_item.item.category}}: {{order_item.item.name}} ----- Price: £{{order_item.item.price}}</li>
+        <li><p class="text">{{order_item.item.category}}: {{order_item.item.name}} ----- Price: £{{order_item.item.price}}</p></li>
 
     </ul>
     {% endfor %}
     <ul style="list-style-type:none;" class="show_user_info">
-        <li><b>Notes:</b> {{order.notes}}</li>
-        <li><b>Phone Number:</b> {{user.phone}}</li>
-        <li><b>Address:</b> {{user.address}}</li>
+        <li><b><p class="text">Notes:</b> {{order.notes}}</p></li>
+        <li><b><p class="text">Phone Number:</b> {{user.phone}}</p></li>
+        <li><b><p class="text">Address:</b> {{user.address}}</p></li>
     </ul>
     {% endfor %}
     {% endblock content %}

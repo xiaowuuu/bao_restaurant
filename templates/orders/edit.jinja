@@ -5,29 +5,32 @@
     <div>
         <h1>Edit My Order</h1>
     </div>
-    Order Number: {{orders.id}}
+    <section class="body">
+        Order Number: {{orders.id}}
         <form action="/orders/{{orders.id}}/edit" method="post">
-    <label for="user_id" name="user_id">Your Account: {{orders.user.name}}</label>
+            <label for="user_id" name="user_id">
+                Your Account: {{orders.user.name}}
+            </label>
 
-    
-    <div>
-        {% for item in items %}
-        <input type="checkbox" name="{{item.id}}"  value="{{orders.item}}" {% if orders.has_item(item.id) %}
-            checked
-        {% endif %}multiple>
-        <label for="item_id">{{item.name}}: £{{item.price}}</label>
-        <br>
-        {% endfor %}
-    </div>
-    <div>
-        <label for="notes">
-            <textarea name="notes" id="notes" type="text"
-                placeholder="{{orders.notes}}" rows="3" cols="50"></textarea>
-        </label>
-        <button type="submit" class="buttons">Update</button>
-    </div>
-</form>
-    
-    </div>
+            <div>
+                {% for item in items %}
+                <input type="checkbox" name="{{item.id}}" value="{{orders.item}}" {% if orders.has_item(item.id) %}
+                    checked {% endif %}multiple>
+                <label for="item_id">
+                    {{item.name}}: £{{item.price}}
+                </label>
+                <br>
+                {% endfor %}
+            </div>
+            <div>
+                <label for="notes">
+                    <textarea name="notes" id="notes" type="text" placeholder="{{orders.notes}}" rows="3"
+                        cols="50"></textarea>
+                </label>
+                <span class="update-button"><button type="submit" class="buttons">Update</button></span>
+            </div>
+        </form>
 
+        </div>
+    </section>
     {% endblock content %}

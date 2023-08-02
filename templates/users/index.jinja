@@ -5,9 +5,9 @@
 <div class="userlist">
     {% for user in users %}
     <ul style="list-style-type:none;">
-        <a href="/users/{{user.id}}/my_orders"><li>{{user.name}}</li></a>
+        <a href="/users/{{user.id}}/my_orders"><li><p class="text">{{user.name}}</p></li></a>
     </ul>
     {% endfor %}
 </div>
-<button onclick="location.href='/users/add';" class="buttons">Create New Account</button>
+<span class="new_user_button"><button onclick="location.href='/users/add';" class="buttons">Create New Account</button></span>
 {% endblock content %}

@@ -1,14 +1,17 @@
 {% extends 'base.jinja' %}
 {% block content %}
 <h1>Create New Account</h1>
-<form action="/users/add" method="post">
-    <label for="name" >Your Name</label>
-    <input type="text" name="name" id="name">
-    <label for="phone" >Phone</label>
-    <input type="number" name="phone" id="phone">
-    <label for="address">Address</label>
-    <textarea rows="2" cols="50" name="address" id="address"></textarea>
-<button type="submit" class="buttons">Confirm</button>
-</form>
-
+<section class="body">
+    <div class="new_user">
+        <form action="/users/add" method="post">
+            <span><label for="name">Your Name</label></span>
+<span><input type="text" name="name" id="name"></span>
+            <span><label for="phone">Phone</label></span>
+                <span><input type="number" name="phone" id="phone"></span>
+            <span><label for="address">Address</label>
+                <span><textarea rows="2" cols="50" name="address" id="address"></textarea></span>
+            <button type="submit" class="buttons">Confirm</button>
+        </form>
+    </div>
+</section>
 {% endblock content %}

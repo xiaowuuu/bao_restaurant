@@ -2,6 +2,7 @@
 {% extends 'base.jinja' %}
 {% block content %}
 <h1>Add New Order</h1>
+<section class="body">
 <form action="/orders/new" method="post">
     <div>
         <label for="user_id">Select Your Account</label>
@@ -27,4 +28,5 @@
         <button type="submit" class="buttons">Place Order</button>
     </div>
 </form>
+</section>
 {% endblock content %}
