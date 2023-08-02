@@ -32,6 +32,12 @@ class Order(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id')) 
     items = db.relationship('OrderItem',backref='order', cascade="all, delete")
     notes = db.Column(db.Text())
+    def has_item(self, item_id):
+        for order_item in self.items:
+            if order_item.item_id == item_id:
+                return True
+        return False
+        # return item_id in [order_item.item_id for order_item in self.items]
 
     def __repr__(self):
         return f"<Order: {self.id}: {self.notes}>"

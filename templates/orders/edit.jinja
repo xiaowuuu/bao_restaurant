@@ -6,35 +6,28 @@
         <h1>Edit My Order</h1>
     </div>
     Order Number: {{orders.id}}
-    {{orders.user.name}}
-    <form action="/orders/{{order.id}}/edit" method="post">
-        <div>
-            <label for="user_id">Select Your Account</label>
-            <select name="user_id" id="user_id" required>
-                {% for user in users %}
-                <option value="{{user.id}}">{{ user.name }}</option>
-                {% endfor %}
-            </select>
-        </div>
+        <form action="/orders/{{orders.id}}/edit" method="post">
+    <label for="user_id" name="user_id">Your Account: {{orders.user.name}}</label>
 
-        <div>
-            {% for item in items %}
-            <input type="checkbox" name="{{item.id}}" value="{{ item.id }}" multiple>
-            <label for="item_id">{{item.name}}: £{{item.price}}</label>
-            <br>
-            <div>
-                <label for="notes">
-                    <input name="notes" id="notes" type="text"
-                        placeholder="Please leave your special reqirement. e.g. 'Less sugar'"></label>
-            </div>
-            <button type="submit">Update</button>
-
-            {# delete #}
-            <form class="delete-order" action="/orders/{{order.id}}/delete" method="POST">
-                <button type="submit">Delete Order</button>
-            </form>
-    </form>
-    {% endfor %}
+    
+    <div>
+        {% for item in items %}
+        <input type="checkbox" name="{{item.id}}"  value="{{orders.item}}" {% if orders.has_item(item.id) %}
+            checked
+        {% endif %}multiple>
+        <label for="item_id">{{item.name}}: £{{item.price}}</label>
+        <br>
+        {% endfor %}
+    </div>
+    <div>
+        <label for="notes">
+            <textarea name="notes" id="notes" type="text"
+                placeholder="{{orders.notes}}" rows="3" cols="50"></textarea>
+        </label>
+        <button type="submit">Update</button>
+    </div>
+</form>
+    
     </div>
 
     {% endblock content %}

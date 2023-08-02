@@ -61,18 +61,57 @@ def show_order(id):
     return render_template("orders/order_by_id.jinja", user = user, order=order, orderitems=orderitems)
 
 
-# user edit order by order id
+# user edit order by order id, render the page first
 @orders_blueprint.route("/orders/<id>/edit")
 def edit_order(id):
-    user = User.query.all()
+    items = Item.query.all()
     orders = Order.query.get(id)
-    orderitem = OrderItem.query.filter_by(order_id = id)
-    return render_template("orders/edit.jinja", user=user, orders=orders, orderitem=orderitem)
-
-# @orders_blueprint.route("/orders/<id>", methods=['POST'])
+    return render_template("orders/edit.jinja", orders=orders, items=items)
+# # edit
+# @orders_blueprint.route("/orders/<id>/edit", methods=['POST'])
 # def update_order(id):
+#     user_id = request.form['user_id']
+#     item = request.form['item']
+#     notes = request.form['notes']
+#     orders = Order.query.get(id)
+    
+#     orders.item = item
+#     orders.notes = notes
+#     orders.user_id = user_id
+# # do i need to clear the table first as i can select multiple items?
 
+#     db.session.add(orders)
+#     db.session.commit()
 
+#     items = Item.query.all()
+#     for item in items:
+#         if str(item.id) in request.form:
+#             kitchen_order = OrderItem(order=orders, item=item)
+#             db.session.add(kitchen_order)
+#             db.session.commit()  
+#     return redirect("/orders/<id>")
+
+@orders_blueprint.route("/orders/<id>/edit", methods=["post"])
+def update_order(id):
+    # user_id = request.form['user_id']
+    # Order.query.filter(Order.)
+    notes = request.form['notes']
+    order = Order.query.get(id)
+    order.notes = notes
+    
+    # loop through the items, if the item.id is in request.form, create an order_item
+    items = Item.query.all()
+    OrderItem.query.filter(OrderItem.order_id == order.id).delete()
+    for item in items:
+
+        # else if item not in order, create new OrderItem
+        if str(item.id) in request.form:
+            kitchen_order = OrderItem(order=order, item=item)
+            db.session.add(kitchen_order)
+            
+    db.session.commit() 
+
+    return redirect(f'/orders/{id}')
 # delete order by order id
 @orders_blueprint.route("/orders/<id>/delete", methods=['POST'])
 def delete_order(id):

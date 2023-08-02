@@ -18,6 +18,7 @@ Order Number: {{order.id}}
     <li>Phone Number: {{order.user.phone}}</li>
     <li>Address: {{order.user.address}}</li>
 </ul>
+<button onclick="window.location.href='/orders/{{order.id}}/edit';" class="edit-button">Edit Order</button>
 
 <form action="/orders/{{order.id}}/delete" method="POST">
     <input class="delete--danger" type="submit" value="Delete">
