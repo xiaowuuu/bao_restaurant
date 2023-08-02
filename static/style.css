@@ -6,6 +6,9 @@ body {
     background-color: rgb(238, 70, 70);
 }
 /* homepage */
+.h1-menu {
+    font-family: 'Pacifico', cursive;
+}
 .homepage h1 {
     display: flex;
     justify-content: center;
@@ -16,8 +19,22 @@ body {
     font-size:40px;
 }
 
+.whole-page{
+    margin: 5px;
+}
 
-/* show page */
+.buttons {
+    border-radius: 10px;
+    padding: 5px 15px;
+    border: none;
+    margin: 5px;
+}
+
+.buttons:hover {
+    background-color:rgb(230, 163, 163)
+}
+
+
 
 
 

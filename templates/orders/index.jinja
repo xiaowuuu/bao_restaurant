@@ -10,7 +10,7 @@
         {% for order in orders %}
         {{ order.id}}
         <form action="/orders/{{ order.id }}/delete" method="POST">
-            <input type="submit" class="user-delete-order" value="delete">
+            <input class="buttons" type="submit" value="delete">
         </form>
 
         {% endfor %}

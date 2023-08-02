@@ -1,7 +1,11 @@
 {% extends 'base.jinja' %}
 
 {% block content %}
-
+<div class="homepage-title">
 <h1>Welcome to Ying and Paddy's Bao Restaurant</h1>
-
+</div>
+<div class="home-button wrap">
+<button onclick="location.href='/users/add';" class="buttons">Join Us</button>
+<button onclick="window.location.href='/orders/new';" class="buttons">Order Food</button>
+</div>
 {% endblock content %}

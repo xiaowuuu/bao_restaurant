@@ -1,11 +1,6 @@
 {% extends 'base.jinja' %}
 {% block content %}
-{# order = Order.query.get(id)
-orderitems = OrderItem.query.filter_by(order_id = id) #}
-{# history
-user = User.query.get(id)
-orders = Order.query.filter_by(user_id = id)
-{% for order in user.orders %} #}
+
 Order Number: {{order.id}}
 {{order.user_id.name}}
 {% for orderitem in order.items %}
@@ -18,10 +13,10 @@ Order Number: {{order.id}}
     <li>Phone Number: {{order.user.phone}}</li>
     <li>Address: {{order.user.address}}</li>
 </ul>
-<button onclick="window.location.href='/orders/{{order.id}}/edit';" class="edit-button">Edit Order</button>
+<button onclick="window.location.href='/orders/{{order.id}}/edit';" class="buttons">Edit Order</button>
 
 <form action="/orders/{{order.id}}/delete" method="POST">
-    <input class="delete--danger" type="submit" value="Delete">
+    <button class="buttons" type="submit" value="Delete">Delete</button>
 </form>
 
 

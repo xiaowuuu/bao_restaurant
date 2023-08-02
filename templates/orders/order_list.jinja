@@ -13,12 +13,12 @@
     <h3><b>Order Number: {{order.id}}</b></h3>
 </a>
 {% for order_item in order.items %}
-    <p>{{order_item.item.name}}</p>
+    <p>{{order_item.item.category}}: {{order_item.item.name}}</p>
 {% endfor %}
 {% endfor %}
 {% else %}
 <p>You have no order yet</p>
-<button onclick="window.location.href='/orders/new';" class="homepage-button">Order Here</button>
+<button onclick="window.location.href='/orders/new';" class="buttons">Order Here</button>
 {% endif %}
 
 {% endblock content %}

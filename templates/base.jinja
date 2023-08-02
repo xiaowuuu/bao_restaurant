@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ying & Paddy's Bao</title>
     <link href="https://fonts.googleapis.com/css2?family=Borel&family=Caprasimo&family=Pacifico&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 <body>
 {# header logo / home link #}
+<div class="whole-page">
     <div class="header-wrap">
         <header class="header">
         <span>
-            <h1 class="logo">
-            <a href="/" class="logo" title="back to home">Home</a>
-            </h1>
+            
+            <a href="/" class="logo" title="back to home"><h1 class="h1-menu">Home</h1></a>
+            
         </span>
         </header>
     </div>
@@ -24,9 +25,9 @@
     <main class="">
         <nav>
             {# buttons: menu, user input/submit order, kitchen buttont #}
-            <button onclick="window.location.href='/items';" class="homepage-button">Menu</button>
-            <button onclick="window.location.href='/orders/new';" class="homepage-button">Order Food</button>
-            <button onclick="window.location.href='/users';" class="homepage-button">Manage My Account</button>
+            <button onclick="window.location.href='/items';" class="buttons">Menu</button>
+            <button onclick="window.location.href='/orders/new';" class="buttons">Order Food</button>
+            <button onclick="window.location.href='/users';" class="buttons">Manage My Account</button>
 
         </nav>
         <section id="content">
@@ -38,4 +39,5 @@
         </section>
     </main>
 </body>
+</div>
 </html>
