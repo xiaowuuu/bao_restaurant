@@ -2,22 +2,24 @@
 {# route: users/<id>/history #}
     {% extends 'base.jinja' %}
     {% block content %}
+    <section class="body">
     <h1>{{user.name}}'s Order</h1>
 
     {# user info loop #}
     {% for order in user.orders %}
-    <p class="text">Order Number: {{order.id}}</p>
+    Order Number: {{order.id}}
     {# order info loop#}
     {% for order_item in order.items %}
     <ul style="list-style-type:none;">
-        <li><p class="text">{{order_item.item.category}}: {{order_item.item.name}} ----- Price: £{{order_item.item.price}}</p></li>
+        <li>{{order_item.item.category}}: {{order_item.item.name}} ----- Price: £{{order_item.item.price}}</li>
 
     </ul>
     {% endfor %}
     <ul style="list-style-type:none;" class="show_user_info">
-        <li><b><p class="text">Notes:</b> {{order.notes}}</p></li>
-        <li><b><p class="text">Phone Number:</b> {{user.phone}}</p></li>
-        <li><b><p class="text">Address:</b> {{user.address}}</p></li>
+        <li><b>Notes:</b> {{order.notes}}</li>
+        <li><b>Phone Number:</b> {{user.phone}}</li>
+        <li><b>Address:</b> {{user.address}}</li>
     </ul>
+    </section>
     {% endfor %}
     {% endblock content %}

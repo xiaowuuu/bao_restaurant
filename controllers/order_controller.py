@@ -67,34 +67,9 @@ def edit_order(id):
     items = Item.query.all()
     orders = Order.query.get(id)
     return render_template("orders/edit.jinja", orders=orders, items=items)
-# # edit
-# @orders_blueprint.route("/orders/<id>/edit", methods=['POST'])
-# def update_order(id):
-#     user_id = request.form['user_id']
-#     item = request.form['item']
-#     notes = request.form['notes']
-#     orders = Order.query.get(id)
-    
-#     orders.item = item
-#     orders.notes = notes
-#     orders.user_id = user_id
-# # do i need to clear the table first as i can select multiple items?
-
-#     db.session.add(orders)
-#     db.session.commit()
-
-#     items = Item.query.all()
-#     for item in items:
-#         if str(item.id) in request.form:
-#             kitchen_order = OrderItem(order=orders, item=item)
-#             db.session.add(kitchen_order)
-#             db.session.commit()  
-#     return redirect("/orders/<id>")
 
 @orders_blueprint.route("/orders/<id>/edit", methods=["post"])
 def update_order(id):
-    # user_id = request.form['user_id']
-    # Order.query.filter(Order.)
     notes = request.form['notes']
     order = Order.query.get(id)
     order.notes = notes
@@ -115,14 +90,13 @@ def update_order(id):
 # delete order by order id
 @orders_blueprint.route("/orders/<id>/delete", methods=['POST'])
 def delete_order(id):
-    # Order.query.filter_by(id = id).delete()
     order = Order.query.get(id)
     user_id = order.user_id
     db.session.delete(order)
     db.session.commit()
     return redirect(f"/users/{user_id}/my_orders")
 
-
-
-
-
+@orders_blueprint.route("/hot")
+def popular_order(item_id):
+    OrderItem.query.get(item_id)
+    

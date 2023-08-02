@@ -40,6 +40,10 @@ a:visited {
     color: #263A29;
 }
 
+a:hover{
+    color:#168627
+}
+
 body {
     background-color: #F2E3DB;
 }
@@ -120,14 +124,4 @@ img {
 
 .buttons:hover {
     background-color: #FF6666
-}
-
-@media only screen and (max-width: 768px) {
-    .hero>.container {
-        flex-direction: column;
-    }
-
-    .hero__title {
-        font-size: 32px;
-    }
 }
