@@ -2,9 +2,9 @@
 {% extends 'base.jinja' %}
 
 {% block content %}
-<div class="info_block">
-    <h1>Menu</h1>
 
+    <h1>Menu</h1>
+<div class="menu-box">
     {% for item in items %}
     <ul style="list-style-type:none;">
 {% if  item.category == "Bao" %}
