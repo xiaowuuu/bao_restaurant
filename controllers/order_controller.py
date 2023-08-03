@@ -95,8 +95,3 @@ def delete_order(id):
     db.session.delete(order)
     db.session.commit()
     return redirect(f"/users/{user_id}/my_orders")
-
-@orders_blueprint.route("/hot")
-def popular_order(item_id):
-    OrderItem.query.get(item_id)
-    
