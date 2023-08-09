@@ -60,7 +60,8 @@ def show_order(id):
     order = Order.query.get(id)
     user = User.query.all()
     orderitems = OrderItem.query.filter_by(order_id = id)
-    return render_template("orders/order_by_id.jinja", user = user, order=order, orderitems=orderitems)
+    total_order_price = sum(orderitem.item.price* orderitem.quantity for orderitem in orderitems)
+    return render_template("orders/order_by_id.jinja", user = user, order=order, orderitems=orderitems, total_order_price=total_order_price)
 
 
 # user edit order by order id, render the page first
