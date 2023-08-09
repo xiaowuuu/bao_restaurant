@@ -24,7 +24,7 @@ def users():
 def add_orders():
     user_id = request.form['user_id']
     notes = request.form['notes']
-
+    
     user = User.query.get(user_id)
     order = Order(user=user, notes=notes)
     db.session.add(order)
@@ -32,8 +32,10 @@ def add_orders():
     # loop through the items, if the item.id is in request.form, create an order_item
     items = Item.query.all()
     for item in items:
-        if str(item.id) in request.form:
-            kitchen_order = OrderItem(order=order, item=item)
+        item_id = str(item.id)
+        if item_id in request.form:
+            quantity = int(request.form['quantity'])
+            kitchen_order = OrderItem(order=order, item=item, quantity=quantity)
             db.session.add(kitchen_order)
             db.session.commit()     
     return redirect('/orders/new')

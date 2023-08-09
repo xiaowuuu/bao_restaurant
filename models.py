@@ -17,7 +17,7 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
-    phone = db.Column(db.Integer)
+    phone = db.Column(db.VARCHAR(20))
     address = db.Column(db.String(64))
     orders = db.relationship('Order', backref='user')
 

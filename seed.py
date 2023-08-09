@@ -11,7 +11,7 @@ def seed():
     Item.query.delete()
     user_1 = User(name="Ying", phone="1234", address="Leith")
     user_2 = User(name="Patrick", phone="54321", address="Leith Walk")
-    user_3 = User(name="Holly", phone="23456", address="37 Castle Terrace")
+    user_3 = User(name="Ruth", phone="23456", address="37 Castle Terrace")
 
     item_1 = Item(name="Beef Bao", price=3, category="Bao")
     item_2 = Item(name="Tofu Bao (V)", price=3, category="Bao")
