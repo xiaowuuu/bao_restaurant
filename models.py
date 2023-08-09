@@ -38,6 +38,12 @@ class Order(db.Model):
                 return True
         return False
         # return item_id in [order_item.item_id for order_item in self.items]
+    def get_item_quantity(self, item_id):
+        for order_item in self.items:
+            if order_item.item_id == item_id:
+                return order_item.quantity
+        return 0
+        
 
     def __repr__(self):
         return f"<Order: {self.id}: {self.notes}>"
