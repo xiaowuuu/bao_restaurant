@@ -133,7 +133,7 @@ img {
     border-radius: 10px;
     border: none;
     padding: 5px 15px;
-    background-color: rgb(242, 27, 27);
+    background-color: #f44336;
     color: white;
 }
 
@@ -161,6 +161,8 @@ img {
     background-color: #fefefe;
     margin: 5% auto 15% auto;
     /* 5% from the top, 15% from the bottom and centered */
+    display: flex;
+    align-items: center;
     border: 1px solid #000;
     width: 60%;
     height: 200px;
