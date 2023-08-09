@@ -22,7 +22,7 @@ def users():
 # create new order
 @orders_blueprint.route("/orders/new", methods=["POST"])
 def add_orders():
-    user_id = request.form['user_id']
+    user_id = int(request.form['user_id'])
     notes = request.form['notes']
     
     user = User.query.get(user_id)
@@ -34,10 +34,10 @@ def add_orders():
     for item in items:
         item_id = str(item.id)
         if item_id in request.form:
-            quantity = int(request.form['quantity'])
+            quantity = int(request.form[f"{item_id}_quantity"])
             kitchen_order = OrderItem(order=order, item=item, quantity=quantity)
             db.session.add(kitchen_order)
-            db.session.commit()     
+    db.session.commit()     
     return redirect('/orders/new')
 
 # order history (only for displaying, could not edit or delete)

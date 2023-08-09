@@ -14,10 +14,25 @@
         <li>Address: {{order.user.address}}</li>
     </ul>
     <button onclick="window.location.href='/orders/{{order.id}}/edit';" class="buttons">Edit Order</button>
+    {# delete modal #}
+    <button class="buttons" onclick="document.getElementById('id01').style.display='block'">Delete Order</button>
 
-    <form action="/orders/{{order.id}}/delete" method="POST">
-        <button class="buttons" type="submit" value="Delete">Delete</button>
+    <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close"
+            title="Close Modal">&times;</span>
+        <form class="modal-content" action="/orders/{{order.id}}/delete" method="POST">
+            <div class="container">
+                <p>Are you sure you want to delete the order?</p>
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <button class="deletebtn" type="submit" value="Delete">Delete</button>
+        </form>
+    </div>
+    </div>
     </form>
+    </div>
+
+
 </section>
 
 {% endblock content %}
