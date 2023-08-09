@@ -60,7 +60,7 @@ def show_order(id):
     order = Order.query.get(id)
     user = User.query.all()
     orderitems = OrderItem.query.filter_by(order_id = id)
-    total_order_price = sum(orderitem.item.price* orderitem.quantity for orderitem in orderitems)
+    total_order_price = sum(orderitem.item.price * orderitem.quantity for orderitem in orderitems)
     return render_template("orders/order_by_id.jinja", user = user, order=order, orderitems=orderitems, total_order_price=total_order_price)
 
 
@@ -81,10 +81,11 @@ def update_order(id):
     items = Item.query.all()
     OrderItem.query.filter(OrderItem.order_id == order.id).delete()
     for item in items:
-
         # else if item not in order, create new OrderItem
+        item_id_str = str(item.id)
         if str(item.id) in request.form:
-            kitchen_order = OrderItem(order=order, item=item)
+            quantity = int(request.form[f"{item_id_str}_quantity"])
+            kitchen_order = OrderItem(order=order, item=item, quantity=quantity)
             db.session.add(kitchen_order)
             
     db.session.commit() 
