@@ -89,7 +89,7 @@ h1 {
 
 
 .text {
-    text-align: center;
+    text-align:center;
     font-size: 20px;
     line-height: 1.6;
 }
@@ -190,4 +190,11 @@ hr {
 .close:hover,.close:focus {
     color: #f44336;
     cursor: pointer;
+}
+
+.popular_icon {
+    width: 2%;
+    position: relative;
+    padding-right: 250px;
+    top: 30px
 }

@@ -101,10 +101,16 @@ def delete_order(id):
     db.session.commit()
     return redirect(f"/users/{user_id}/my_orders")
 
-
+# the popular food with quantity
 @orders_blueprint.route("/hot")
 def hot_item():
     popular_items = db.session.query(OrderItem.item_id, func.sum(OrderItem.quantity).label('total_quantity')).group_by(OrderItem.item_id).order_by(func.sum(OrderItem.quantity).desc()).all()
+    
+    most_popular_item = None
+    max_quantity = 0
+    for item_id, total_quantity in popular_items:
+        if total_quantity > max_quantity:
+            max_quantity = total_quantity
+            most_popular_item = Item.query.get(item_id)
     popular_items_with_details = [(Item.query.get(item_id), total_quantity) for item_id, total_quantity in popular_items]
-
-    return render_template("/orders/hot.jinja", popular_items=popular_items_with_details)
+    return render_template("/orders/hot.jinja", popular_items=popular_items_with_details, most_popular_item=most_popular_item)

@@ -2,11 +2,17 @@
 {% block content %}
 <h1>Most Popular Food</h1>
 <section class="body">
-    {% for item, total_quantity in popular_items %}
     <ul>
-        <li>{{item.name}} - {{total_quantity}}</li>
+        {% for item, total_quantity in popular_items %}
+        <div class="popular_wrap">
+        <li class="text">
+            {% if item == most_popular_item %}
+            <img src="static/images/most_popular.png" alt="most popular" class="popular_icon">
+            {% endif %}
+            {{item.name}} ----- {{total_quantity}}
+        </li>
+        </div>
+        {% endfor %}
     </ul>
-
-{% endfor %}
 </section>
 {% endblock content %}
