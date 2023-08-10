@@ -1,25 +1,12 @@
-{# {% extends 'base.jinja' %}
-{% block content %}
-<h1>Most Popular Food</h1>
-{% for item in items|unique %}
-
-    {% for user in ordered_users %}
-        
-    
-<ul>
-    <li>{{item.name}}: {{user.name }}</li>
-</ul>
-{% endfor %}
-{% endfor %}
-{% endblock content %} #}
-
 {% extends 'base.jinja' %}
 {% block content %}
-    <h1>Most Popular Food</h1>
-    {% for item in items %}
+<h1>Most Popular Food</h1>
+<section class="body">
+    {% for item, total_quantity in popular_items %}
     <ul>
-    <li>{{item.name}}: {{item.total_orders}}</li>
+        <li>{{item.name}} - {{total_quantity}}</li>
     </ul>
-        
-    {% endfor %}
+
+{% endfor %}
+</section>
 {% endblock content %}

@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models import User, Item, Order, OrderItem
 from app import db
+from sqlalchemy import func
 
 orders_blueprint = Blueprint("orders", __name__)
 
@@ -99,3 +100,11 @@ def delete_order(id):
     db.session.delete(order)
     db.session.commit()
     return redirect(f"/users/{user_id}/my_orders")
+
+
+@orders_blueprint.route("/hot")
+def hot_item():
+    popular_items = db.session.query(OrderItem.item_id, func.sum(OrderItem.quantity).label('total_quantity')).group_by(OrderItem.item_id).order_by(func.sum(OrderItem.quantity).desc()).all()
+    popular_items_with_details = [(Item.query.get(item_id), total_quantity) for item_id, total_quantity in popular_items]
+
+    return render_template("/orders/hot.jinja", popular_items=popular_items_with_details)
