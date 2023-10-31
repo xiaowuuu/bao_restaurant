@@ -12,7 +12,7 @@
 
 .header {
     height: 0px;
-    padding: 5px;
+    padding: 10px;
     display: flex;
     align-content: center;
     background-color: #F2E3DB;
@@ -90,7 +90,7 @@ h1 {
 .menu-box {
     border: solid 5px rgb(238, 142, 142);
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px;
     width: fit-content;
     text-align: center;
     justify-content: center;
@@ -126,9 +126,9 @@ img {
 
 .buttons {
     border-radius: 10px;
-    padding: 5px 15px;
+    padding: 5px 30px;
     border: none;
-    margin: 5px;
+    margin: 10px;
     background-color: rgb(255, 137, 137);
     color: white;
 }
