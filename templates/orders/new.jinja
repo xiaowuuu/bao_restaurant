@@ -13,11 +13,11 @@
         </select>
     </div>
 
-    <div>
+    <div class="orderpage_items">
         {% for item in items %}
         <input type="checkbox" name="{{item.id}}" value="{{ item.id }}" multiple>
         <label for="{{item.id}}">{{item.name}}: £{{item.price}}</label>
-        <input type="number" id="{{item.id}}_quantity" name="{{item.id}}_quantity" min="1" max="5">
+        <input type="number" id="{{item.id}}_quantity" name="{{item.id}}_quantity" min="1" max="5" class="order_item_num">
         <br>
         {% endfor %}
     </div>
@@ -26,8 +26,8 @@
             <textarea name="notes" id="notes" type="text"
                 placeholder="Please leave your special requirements. e.g. 'Less sugar'" rows="3" cols="50"></textarea>
         </label>
-        <button type="submit" class="buttons">Place Order</button>
     </div>
+    <button type="submit" class="buttons">Place Order</button>
 </form>
 </section>
 {% endblock content %}

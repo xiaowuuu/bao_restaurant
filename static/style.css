@@ -96,6 +96,14 @@ h1 {
     justify-content: center;
 }
 
+/* order page */
+.orderpage_items{
+    display: inline-block;
+    text-align:left;
+    vertical-align: middle;
+    margin: 10px;
+}
+
 
 .text {
     text-align:center;
