@@ -18,3 +18,13 @@ def new_user():
     db.session.add(user)
     db.session.commit()
     return redirect("/users")
+
+@users_blueprint.route("/users/delete/<user_id>", methods=["POST"])
+def delete_user(user_id):
+    user = User.query.get(user_id)
+    if user:
+        db.session.delete(user)
+        db.session.commit()
+        return redirect("/users")
+    else:
+        return "User not found", 404

@@ -148,6 +148,10 @@ h1 {
     display: flex;
     justify-content: center;
 }
+.delete_user_button {
+    display: flex;
+    justify-content: center;
+}
 
 img {
     width: 40%;

@@ -6,20 +6,25 @@
 
 <h1>{{user.name}}'s Order</h1>
 <section class="body">
-{% if user.orders %}
-    
-
-{% for order in user.orders %}
-<a href="/orders/{{order.id}}">
-    <h3><b>Order Number: {{order.id}}</b></h3>
-</a>
-{% for order_item in order.items %}
-    <p>{{order_item.item.category}}: {{order_item.item.name}}</p>
-{% endfor %}
-{% endfor %}
-{% else %}
-<p>You have no order yet</p>
-<button onclick="window.location.href='/orders/new';" class="buttons">Order Here</button>
-{% endif %}
+    {% if user.orders %}
+        {% for order in user.orders %}
+            <a href="/orders/{{order.id}}">
+                <h3><b>Order Number: {{order.id}}</b></h3>
+            </a>
+            {% for order_item in order.items %}
+                <p>{{order_item.item.category}}: {{order_item.item.name}}</p>
+            {% endfor %}
+        {% endfor %}
+    {% else %}
+        <p>You have no orders yet</p>
+        <button onclick="window.location.href='/orders/new';" class="buttons">Order Here</button>
+    {% endif %}
 </section>
+
+<section class="delete-account" >
+    <form action="/users/delete/{{ user.id }}" method="post">
+        <span class="delete_user_button"><button class="buttons" type="submit" class="btn btn-danger">Delete Account</button></span>
+    </form>
+</section>
+
 {% endblock content %}
