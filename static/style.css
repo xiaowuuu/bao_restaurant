@@ -239,9 +239,8 @@ hr {
     cursor: pointer;
 }
 
-/* .popular_icon {
-    width: 2%;
-    position: relative;
-    padding-right: 250px;
-    top: 30px
-} */
+.popular_wrap{
+    text-align: left;
+    margin-left: 500px;
+    margin-right: auto;
+}
